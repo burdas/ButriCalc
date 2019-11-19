@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>NutriCalc</title>
+
+  <meta name="description" content="Página para calcular calorias y macronutrientes">
+  <meta name="author" content="Burdas">
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col text-center">
+        <h1 class="text-center my-4">Calculadora de calorias y macros</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <form class="text-center" id="formulario">
+          <h2 class="text-center my-2">Introduce tus datos</h2>
+          <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
+            <label class="btn btn-secondary">
+              <input type="radio" name="genero" id="perderPeso" value="hombre" autocomplete="off" required> Hombre
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="genero" id="mantenerse" value="mujer" autocomplete="off" required> Mujer
+            </label>
+          </div>
+          <div class="input-group my-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Peso (Kg)</div>
+            </div>
+            <input type="number" class="form-control" id="pesoKg" placeholder="Ejemplo: 80" required>
+          </div>
+          <div class="input-group my-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Estatura (Cm)</div>
+            </div>
+            <input type="number" class="form-control" id="estaturaCm" placeholder="Ejemplo: 180" required>
+          </div>
+          <div class="input-group my-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Edad (Años)</div>
+            </div>
+            <input type="number" class="form-control" id="edad" placeholder="Ejemplo: 25" required>
+          </div>
+          <div class="btn-group btn-group-toggle my-2 table-responsive" data-toggle="buttons">
+            <label class="btn btn-secondary">
+              <input type="radio" name="ejercicio" value="1" id="ejercicio1" autocomplete="off" required> Poco ejercicio
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="ejercicio" value="2" id="ejercicio2" autocomplete="off" required> Ejercicio
+              ligero (1-3
+              dias a la
+              semana)
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="ejercicio" value="3" id="ejercicio3" autocomplete="off" required> Ejercicio
+              moderado (3-5
+              dias a la
+              semana)
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="ejercicio" value="4" id="ejercicio4" autocomplete="off" required> Ejercicio
+              fuerte (6-7
+              dias a la
+              semana)
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="ejercicio" value="5" id="ejercicio5" autocomplete="off" required> Ejercicio muy
+              fuerte
+              (dos veces al
+              dia)
+            </label>
+          </div>
+          <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
+            <label class="btn btn-secondary">
+              <input type="radio" name="objetivo" value="1" id="perderPeso" autocomplete="off" required> Perder peso
+              (perder
+              grasa)
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="objetivo" value="2" id="mantenerse" autocomplete="off" required> Mantenerse
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="objetivo" value="3" id="ganarPeso" autocomplete="off" required> Ganar peso
+              (ganar musculo)
+            </label>
+          </div>
+          <br>
+          <input type="submit" name="submitButton" id="submitButton" value="Calcular" class="my-2 btn btn-success">
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h2 class="">Objetivo de calorias diario</h2>
+        <h3 class="pl-4">Tasa metabólica basal</h3>
+        <p id="tmb" class="text-center h4 text-success">-</p>
+        <h3 class="pl-4">Ingesta diaria de calorias recomendadas</h3>
+        <p id="recomendada" class="text-center h4 text-success">-</p>
+        <h3 class="pl-4">Ingesta diaria de calorias para cumplir el objetivo</h3>
+        <p id="calObjetivo" class="text-center h4 text-success">-</p>
+        <h2 class="my-2">Distribución de macronutrientes</h2>
+        <div class="row">
+          <div class="col-md-6 text-left">
+            <h3 class="pl-4">Hidratos de carbono</h3>
+          </div>
+          <div class="col-md-6 text-center">
+              <p id="hidratos" class="text-center h4 text-success">-</p>
+          </div>
+        </div>
+        <div class="progress my-2">
+          <div id="pbHidratos" class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar"
+            style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 text-left">
+              <h3 class="pl-4">Grasas</h3>
+            </div>
+            <div class="col-md-6 text-center">
+                <p id="grasas" class="text-center h4 text-success">-</p>
+            </div>
+          </div>
+        <div class="progress my-2">
+          <div id="pbGrasas" class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar"
+            style="width: 0%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 text-left">
+              <h3 class="pl-4">Proteinas</h3>
+            </div>
+            <div class="col-md-6 text-center">
+                <p id="proteinas" class="text-center h4 text-success">-</p>
+            </div>
+          </div>
+        <div class="progress my-2">
+          <div id="pbProteinas" class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar"
+            style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="row my-3">
+          <div class="col-md-4 text-center">
+          </div>
+          <div class="col-md-4 text-center">
+            <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#exampleModal">
+              Información
+            </button>
+          </div>
+          <div class="col-md-4 text-center">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Información</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li><strong>Tasa de metablismo basal</strong><br>Es el número de calorías diarias que tu cuerpo necesita por
+              el hecho de funcionar un día más.</li>
+            <li><strong>Ingesta diaria de clorias recomendadas</strong><br>Este es el número de calorías diarias
+              incluyendo el nivel de deporte indicado.</li>
+            <li><strong>Ingesta diaria para cumplir objetivo</strong><br>Este es el número de calorías diarias
+              incluyendo un deficit o superávit calorico de 300 calorias. Si el objetivo es mantenerse entonces este
+              número sera igual al anterior.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>
