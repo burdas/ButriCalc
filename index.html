@@ -13,6 +13,7 @@
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/rangeslider.css" rel="stylesheet">
 
 </head>
 
@@ -55,73 +56,73 @@
         <form class="text-center" id="formulario">
           <h2 class="text-center my-4">Introduce tus datos</h2>
           <div class="card-deck">
-            <div class="card border-primary">
+            <div class="card border-light">
               <div class="card-body">
                 <h3 class="card-title h4 text-left mb-4 ml-2">Indica el género:</h3>
                 <div class="d-flex align-items-center h-75 mx-4">
                   <div class="btn-group-vertical btn-group-toggle btn-block" data-toggle="buttons">
-                    <label class="btn btn-outline-primary btn-lg rounded-pill mb-3">
+                    <label class="btn btn-outline-success btn-lg rounded-pill mb-3">
                       <input type="radio" name="genero" id="perderPeso" value="hombre" autocomplete="off" required>
                       Hombre
                     </label>
-                    <label class="btn btn-outline-primary btn-lg rounded-pill">
+                    <label class="btn btn-outline-success btn-lg rounded-pill">
                       <input type="radio" name="genero" id="mantenerse" value="mujer" autocomplete="off" required> Mujer
                     </label>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="card border-primary">
+            <div class="card border-light">
               <div class="card-body">
                 <div class="form-group text-left">
                   <label for="pesoKg" class="font-weight-bold h5">Peso (Kg):</label>
-                  <input type="number" class="form-control form-control-lg rounded-pill" id="pesoKg" placeholder="Ejemplo: 80"
+                  <input type="number" class="form-control form-control-lg rounded-pill pl-4 " id="pesoKg" placeholder="Ejemplo: 80"
                     required>
                 </div>
                 <div class="form-group my-4 text-left">
                   <label for="estaturaCm" class="font-weight-bold h5">Estatura (cm):</label>
-                  <input type="number" class="form-control form-control-lg rounded-pill" id="estaturaCm" placeholder="Ejemplo: 180"
+                  <input type="number" class="form-control form-control-lg rounded-pill pl-4" id="estaturaCm" placeholder="Ejemplo: 180"
                     required>
                 </div>
                 <div class="form-group text-left">
                   <label for="edad" class="font-weight-bold h5">Edad (Años):</label>
-                  <input type="number" class="form-control form-control-lg rounded-pill" id="edad" placeholder="Ejemplo: 25"
+                  <input type="number" class="form-control form-control-lg rounded-pill pl-4" id="edad" placeholder="Ejemplo: 25"
                     required>
                 </div>
               </div>
             </div>
           </div>
           <div class="card-deck mt-2">
-            <div class="card border-primary mt-3">
+            <div class="card border-light mt-3">
               <div class="card-body">
                 <h3 class="card-title h4 text-left mb-4 ml-2">Indica el nivel de actividad física:</h3>
                 <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
-                  <label class="btn btn-outline-primary btn-lg rounded-pill mb-2">
+                  <label class="btn btn-outline-success btn-lg rounded-pill mb-2">
                     <input type="radio" name="ejercicio" value="1" id="ejercicio1" autocomplete="off" required> Poco
                     ejercicio
                   </label>
-                  <label class="btn btn-outline-primary btn-lg rounded-pill mb-2">
+                  <label class="btn btn-outline-success btn-lg rounded-pill mb-2">
                     <input type="radio" name="ejercicio" value="2" id="ejercicio2" autocomplete="off" required>
                     Ejercicio
                     ligero (1-3
                     dias a la
                     semana)
                   </label>
-                  <label class="btn btn-outline-primary btn-lg rounded-pill mb-2">
+                  <label class="btn btn-outline-success btn-lg rounded-pill mb-2">
                     <input type="radio" name="ejercicio" value="3" id="ejercicio3" autocomplete="off" required>
                     Ejercicio
                     moderado (3-5
                     dias a la
                     semana)
                   </label>
-                  <label class="btn btn-outline-primary btn-lg rounded-pill mb-2">
+                  <label class="btn btn-outline-success btn-lg rounded-pill mb-2">
                     <input type="radio" name="ejercicio" value="4" id="ejercicio4" autocomplete="off" required>
                     Ejercicio
                     fuerte (6-7
                     dias a la
                     semana)
                   </label>
-                  <label class="btn btn-outline-primary btn-lg rounded-pill mb-2">
+                  <label class="btn btn-outline-success btn-lg rounded-pill mb-2">
                     <input type="radio" name="ejercicio" value="5" id="ejercicio5" autocomplete="off" required>
                     Ejercicio
                     muy
@@ -132,22 +133,22 @@
                 </div>
               </div>
             </div>
-            <div class="card border-primary mt-3">
+            <div class="card border-light mt-3">
               <div class="card-body">
                 <h3 class="card-title h4 text-left mb-4 ml-2">Indica el objetivo:</h3>
                 <div class="d-flex align-items-center justify-content-center h-75">
                   <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-outline-primary btn-lg rounded-pill mb-3">
+                    <label class="btn btn-outline-success btn-lg rounded-pill mb-3">
                       <input type="radio" name="objetivo" value="1" id="perderPeso" autocomplete="off" required> Perder
                       peso
                       (perder
                       grasa)
                     </label>
-                    <label class="btn btn-outline-primary btn-lg rounded-pill mb-3">
+                    <label class="btn btn-outline-success btn-lg rounded-pill mb-3">
                       <input type="radio" name="objetivo" value="2" id="mantenerse" autocomplete="off" required>
                       Mantenerse
                     </label>
-                    <label class="btn btn-outline-primary btn-lg rounded-pill mb-3">
+                    <label class="btn btn-outline-success btn-lg rounded-pill mb-3">
                       <input type="radio" name="objetivo" value="3" id="ganarPeso" autocomplete="off" required> Ganar
                       peso
                       (ganar masa muscular)
@@ -257,72 +258,102 @@
         </div>
         <div class="modal-body">
           <form action="" id="formConfig">
-            <div class="card border-info">
+            <div class="card border-success">
               <div class="card-body">
                 <h2 class="h3 mb-3">Proteínas</h2>
-                <div class="form-group h3 ml-4">
-                  <label for="rangePGanancia" class="h4">Ganancia de peso: </label>
-                  <span class="badge badge-info float-right m-2">gr/Kg de peso</span>
-                  <span class="badge badge-info float-right m-2" id="rangePGananciaVista">x</span>
-                  <input type="range" class="form-control-range" id="rangePGanancia" max="2.5" min="1.5" step="0.1"
+                <div class="row ml-4 mb-3">
+                  <div class="col-md-6">
+                    <p class="h4">Ganancia de peso:</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="h3"><span class="badge badge-success float-right m-2" id="rangePGananciaVista">x</span></p>
+                  </div>
+                  <div class="col mt-2">
+                    <input type="range" class="form-control-range" id="rangePGanancia" max="2.5" min="1.5" step="0.1"
                     value="2">
+                  </div>
                 </div>
-                <div class="form-group h3 ml-4">
-                  <label for="rangePMantenimiento" class="h4">Mantenimiento de peso: </label>
-                  <span class="badge badge-info float-right m-2">gr/Kg de peso</span>
-                  <span class="badge badge-info float-right m-2" id="rangePMantenimientoVista">x</span>
-                  <input type="range" class="form-control-range" id="rangePMantenimiento" max="2.5" min="1.5" step="0.1"
+                <div class="row ml-4 mb-3">
+                  <div class="col-md-6">
+                    <p class="h4">Mantenimiento de peso:</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="h3"><span class="badge badge-success float-right m-2" id="rangePMantenimientoVista">x</span></p>
+                  </div>
+                  <div class="col mt-2">
+                    <input type="range" class="form-control-range" id="rangePMantenimiento" max="2.5" min="1.5" step="0.1"
                     value="2">
+                  </div>
                 </div>
-                <div class="form-group h3 ml-4">
-                  <label for="rangePPerdida" class="h4">Perdida de peso: </label>
-                  <span class="badge badge-info float-right m-2">gr/Kg de peso</span>
-                  <span class="badge badge-info float-right m-2" id="rangePPerdidaVista">x</span>
-                  <input type="range" class="form-control-range" id="rangePPerdida" max="2.5" min="1.5" step="0.1"
+                <div class="row ml-4 mb-3">
+                  <div class="col-md-6">
+                    <p class="h4">Perdida de peso:</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="h3"><span class="badge badge-success float-right m-2" id="rangePPerdidaVista">x</span></p>
+                  </div>
+                  <div class="col mt-2">
+                    <input type="range" class="form-control-range" id="rangePPerdida" max="2.5" min="1.5" step="0.1"
                     value="2.5">
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="card border-info mt-4">
+            <div class="card border-success mt-4">
               <div class="card-body">
                 <h2 class="h3 mb-3">Grasas</h2>
-                <div class="form-group h3 ml-4">
-                  <label for="rangeGHombre" class="h4 mr-5">Hombre: </label>
-                  <span class="badge badge-info float-right m-2">gr/Kg de peso</span>
-                  <span class="badge badge-info float-right m-2" id="rangeGHombreVista">x</span>
-                  <input type="range" class="form-control-range" id="rangeGHombre" max="1.2" min="0.8" step="0.1"
+                <div class="row ml-4 mb-3">
+                  <div class="col-md-6">
+                    <p class="h4">Hombre:</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="h3"><span class="badge badge-success float-right m-2" id="rangeGHombreVista">x</span></p>
+                  </div>
+                  <div class="col mt-2">
+                    <input type="range" class="form-control-range" id="rangeGHombre" max="1.2" min="0.8" step="0.1"
                     value="0.8">
+                  </div>
                 </div>
-                <div class="form-group h3 ml-4">
-                  <label for="rangeGMujer" class="h4 mr-5">Mujer: </label>
-                  <span class="badge badge-info float-right m-2">gr/Kg de peso</span>
-                  <span class="badge badge-info float-right m-2" id="rangeGMujerVista">x</span>
-                  <input type="range" class="form-control-range" id="rangeGMujer" max="1.2" min="0.8s" step="0.1"
+                <div class="row ml-4 mb-3">
+                  <div class="col-md-6">
+                    <p class="h4">Mujer:</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="h3"><span class="badge badge-success float-right m-2" id="rangeGMujerVista">x</span></p>
+                  </div>
+                  <div class="col mt-2">
+                    <input type="range" class="form-control-range" id="rangeGMujer" max="1.2" min="0.8s" step="0.1"
                     value="1.2">
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="card border-info mt-4">
+            <div class="card border-success mt-4">
               <div class="card-body">
                 <h2 class="h3 mb-3">Calorías objetivo</h2>
-                <div class="form-group h3 ml-4">
-                  <label for="rangeOCalorias" class="h4">Calorías añadidas o quitadas: </label>
-                  <span class="badge badge-info float-right m-2">Cal</span>
-                  <span class="badge badge-info float-right m-2" id="rangeOCaloriasVista">x</span>
-                  <input type="range" class="form-control-range" id="rangeOCalorias" max="500" min="0" step="10"
+                <div class="row ml-4 mb-3">
+                  <div class="col-md-6">
+                    <p class="h4">Calorías añadidas o quitadas:</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="h3"><span class="badge badge-success float-right m-2" id="rangeOCaloriasVista">x</span></p>
+                  </div>
+                  <div class="col mt-2">
+                    <input type="range" class="form-control-range" id="rangeOCalorias" max="500" min="0" step="10"
                     value="300">
+                  </div>
                 </div>
               </div>
             </div>
             <div class="row mt-4">
               <div class="col-md-4">
-                <button class="btn btn-block btn-lg btn-warning mb-3" id="btnRestablecer">Restablecer</button>
+                <button class="btn btn-block btn-lg btn-warning mb-3 rounded-pill" id="btnRestablecer">Restablecer</button>
               </div>
               <div class="col-md-4">
 
               </div>
               <div class="col-md-4">
-                <input type="submit" value="Guardar cambios" class="btn btn-block btn-lg btn-success mb-3">
+                <input type="submit" value="Guardar cambios" class="btn btn-block btn-lg btn-success mb-3 rounded-pill">
               </div>
             </div>
           </form>
@@ -513,6 +544,7 @@
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/Chart.min.js"></script>
+  <script src="js/rangeslider.min.js"></script>
   <script src="js/scripts.js"></script>
 </body>
 

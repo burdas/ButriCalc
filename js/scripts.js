@@ -45,12 +45,12 @@ $(document).ready(function () {
 // en el apratado de configuración en las variables
 function guardarConfiguracion(e) {
     e.preventDefault();
-    pGanancia = rangePGanancia.value;
-    pMantenimiento = rangePMantenimiento.value;
-    pPerdida = rangePPerdida.value;
-    gHombre = rangeGHombre.value;
-    gMujer = rangeGMujer.value;
-    oCalorias = rangeOCalorias.value;
+    pGanancia = parseFloat(rangePGanancia.value);
+    pMantenimiento = parseFloat(rangePMantenimiento.value);
+    pPerdida = parseFloat(rangePPerdida.value);
+    gHombre = parseFloat(rangeGHombre.value);
+    gMujer = parseFloat(rangeGMujer.value);
+    oCalorias = parseInt(rangeOCalorias.value);
     console.log('gr proteina por kilo de peso - Ganancia: ' + pGanancia);
     console.log('gr proteina por kilo de peso - Mantenimiento: ' + pMantenimiento);
     console.log('gr proteina por kilo de peso - Perdida: ' + pPerdida);
@@ -78,44 +78,42 @@ function inicializarParametros() {
  * en texto los valores del dom
  */
 function inicializarRanges() {
-    rangePGanancia = document.getElementById('rangePGanancia');
-    rangePMantenimiento = document.getElementById('rangePMantenimiento');
-    rangePPerdida = document.getElementById('rangePPerdida');
-    rangeGHombre = document.getElementById('rangeGHombre');
-    rangeGMujer = document.getElementById('rangeGMujer');
-    rangeOCalorias = document.getElementById('rangeOCalorias');
-
-    rangePGanancia.addEventListener("input", cambiarVistaRange);
-    rangePMantenimiento.addEventListener("input", cambiarVistaRange);
-    rangePPerdida.addEventListener("input", cambiarVistaRange);
-    rangeGHombre.addEventListener("input", cambiarVistaRange);
-    rangeGMujer.addEventListener("input", cambiarVistaRange);
-    rangeOCalorias.addEventListener("input", cambiarVistaRange);
+    let ranges = $('input[type="range"]');
+    ranges.rangeslider({
+        polyfill: false,
+    });
+    ranges.on('input', cambiarVistaRange);
 }
 
 /** Muestra los valores del range en texto */
 function cambiarVistaRange() {
-    let name = this.getAttribute('id');
-    document.getElementById(name + 'Vista').innerHTML = this.value;
+    let name = $(this).attr('id');
+    let cadena;
+    if (name == 'rangeOCalorias') {
+        cadena = ' Cal';
+    } else {
+        cadena = ' gr / Kg de peso';
+    }
+    document.getElementById(name + 'Vista').innerHTML = $(this).val() + cadena;
 }
 
 /** Establece los valores por defecto
  * de los rangers y el texto
  */
 function resetConfig() {
-    rangePGanancia.value = defaultPGanancia;
-    rangePMantenimiento.value = defaultPMantenimiento;
-    rangePPerdida.value = defaultPPerdida;
-    rangeGHombre.value = defaultGHombre;
-    rangeGMujer.value = defaultGMujer;
-    rangeOCalorias.value = defaultOCalorias;
+    $('#rangePGanancia').val(defaultPGanancia);
+    $('#rangePMantenimiento').val(defaultPMantenimiento);
+    $('#rangePPerdida').val(defaultPPerdida);
+    $('#rangeGHombre').val(defaultGHombre);
+    $('#rangeGMujer').val(defaultGMujer);
+    $('#rangeOCalorias').val(defaultOCalorias);
 
-    document.getElementById('rangePGanancia' + 'Vista').innerHTML = defaultPGanancia;
-    document.getElementById('rangePMantenimiento' + 'Vista').innerHTML = defaultPMantenimiento;
-    document.getElementById('rangePPerdida' + 'Vista').innerHTML = defaultPPerdida;
-    document.getElementById('rangeGHombre' + 'Vista').innerHTML = defaultGHombre;
-    document.getElementById('rangeGMujer' + 'Vista').innerHTML = defaultGMujer;
-    document.getElementById('rangeOCalorias' + 'Vista').innerHTML = defaultOCalorias;
+    document.getElementById('rangePGanancia' + 'Vista').innerHTML = defaultPGanancia + ' gr / Kg de peso';
+    document.getElementById('rangePMantenimiento' + 'Vista').innerHTML = defaultPMantenimiento + ' gr / Kg de peso';
+    document.getElementById('rangePPerdida' + 'Vista').innerHTML = defaultPPerdida + ' gr / Kg de peso';
+    document.getElementById('rangeGHombre' + 'Vista').innerHTML = defaultGHombre + ' gr / Kg de peso';
+    document.getElementById('rangeGMujer' + 'Vista').innerHTML = defaultGMujer + ' gr / Kg de peso';
+    document.getElementById('rangeOCalorias' + 'Vista').innerHTML = defaultOCalorias + ' Cal';
 }
 
 /** Maneja el formulario de calcular las calorias y macros */
@@ -143,7 +141,9 @@ function generarCal(peso, estatura, edad, genero, ejercicio, objetivo) {
     $("#resultados").toggle();
     var grProteina, calProteina, grGrasas, calGrasas, grHidratos, calHidratos;
     var tmb = calHarrisBennedict(peso, estatura, edad, genero);
+    console.log("Tasa Metabólica Basal: " + tmb);
     var recomendada = ingestaRecomendada(tmb, ejercicio);
+    console.log("Ingesta diaria recomendada: " + recomendada);
     var difereciaCal;
     switch (objetivo) {
         case "1":
@@ -160,6 +160,7 @@ function generarCal(peso, estatura, edad, genero, ejercicio, objetivo) {
             break;
     }
     var caloriasObjetivo = recomendada + difereciaCal;
+    console.log("Ingesta para el objetivo: " + caloriasObjetivo);
     animateValue('tmb', Math.round(tmb), " Cal");
     animateValue('recomendada', Math.round(recomendada), " Cal");
     animateValue('calObjetivo', Math.round(caloriasObjetivo), " Cal");
@@ -285,8 +286,6 @@ function ingestaRecomendada(tmb, ejercicio) {
  * return: true  -> Pantalla vertical (Teléfono)
  */
 function detectRatio() {
-    console.log("Ancho:" + $(window).width());
-    console.log("Alto:" + $(window).height());
     return $(window).width() < $(window).height();
 }
 
@@ -299,7 +298,6 @@ function resizeManager() {
         }
     } else {
         // Pantalla de mobil
-        console.log("Ancho de la página: " + $(window).width());
         $('#chart-area').height($(window).width());
     }
 }
